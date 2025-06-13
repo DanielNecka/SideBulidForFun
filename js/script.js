@@ -17,7 +17,7 @@ function ifUserLoginHendler() {
         }
     }
 
-    fetch("login.html")
+    fetch("/loginActivity/login.html")
         .then(res => res.text())
         .then(html => {body.innerHTML = html;})
         .then(() => {
