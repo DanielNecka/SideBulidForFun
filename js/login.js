@@ -34,6 +34,7 @@ function insertContent(contentType) {
 
                 playAnimation(loginContainer, "fadeIn")
                 inputsHandler(contentType);
+                loginHandler();
             });
 
     } else if (contentType === "register") {
@@ -45,6 +46,7 @@ function insertContent(contentType) {
 
                 playAnimation(loginContainer, "fadeIn")
                 inputsHandler(contentType);
+                registerHandler();
             });
 
     }
@@ -66,15 +68,6 @@ function inputsHandler(contentType) {
             validateInput(input, label);
         });
     });
-}
-
-function playAnimation(element,animationClass) {
-    element.classList.add(animationClass);
-    element.addEventListener("animationend", () => {
-        element.classList.remove(animationClass);
-    });
-
-    return;
 }
 
 function validateInput(input, label) {
@@ -121,6 +114,157 @@ function validateInput(input, label) {
     }
 }
 
+function loginHandler() {
+    const btn = document.querySelector('.loginBtn');
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); 
+            btn.click(); 
+        }
+    });
+
+    btn.addEventListener('click', async () => {
+        const inputs = document.querySelectorAll('input');
+        let allValid = true;
+        let loginData = {};
+
+        inputs.forEach(input => {
+            setErrorMessage(input, null);
+        });
+
+        inputs.forEach(input => {
+            const label = input.parentElement.querySelector('.labelInside');
+            validateInput(input, label);
+
+            if (label.classList.contains('errorInput')) {
+                allValid = false;
+            } else {
+                loginData[input.id] = input.value.trim();
+            }
+        });
+
+        if (!allValid) return; 
+
+        const res = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: loginData.email,
+                password: loginData.password
+            })
+        });
+
+        const msg = await res.text();
+
+        if (!res.ok) {
+            let input = null;
+
+            if (msg.toLowerCase().includes('hasło')) {
+                input = document.querySelector('#password');
+            } else {
+                input = document.querySelector('#email');
+            }
+
+            const label = input.parentElement.querySelector('.labelInside');
+
+            setErrorMessage(input, msg);
+            label.classList.add('errorInput');
+            input.parentElement.classList.add('errorInputParent');
+        } else {
+            document.cookie = "userIsLogIn=true; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+
+            ifUserLoginHendler();
+        }
+    });
+}
+
+function registerHandler() {
+    const btn = document.querySelector('.registerBtn');
+    document.querySelector(".actionContainer").appendChild(btn);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); 
+            btn.click(); 
+        }
+    });
+
+    btn.addEventListener('click', async () => {
+        const inputs = document.querySelectorAll('input');
+        let allValid = true;
+        let userData = {};
+
+        inputs.forEach(input => {
+            const label = input.parentElement.querySelector('.labelInside');
+            validateInput(input, label);
+            if (label.classList.contains('errorInput')) {
+                allValid = false;
+            } else {
+                userData[input.id] = input.value.trim();
+            }
+        });
+
+        if (!allValid) return;
+
+        const res = await fetch('http://localhost:3000/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: userData.email,
+                password: userData.password,
+                name: userData.name,
+                surname: userData.surname,
+                phone: userData.phone
+            })
+        });
+
+        const msg = await res.text();
+
+        if (!res.ok) {
+            const input = document.querySelector('#email');
+            const wrapper = input.closest('.input');
+            const label = wrapper.querySelector('.labelInside'); 
+
+            setErrorMessage(input, msg);
+            label.classList.add('errorInput');
+            wrapper.classList.add('errorInputParent');
+        } else {
+            location.reload(); 
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function setErrorMessage(input, message) {
     const label = document.querySelector(`label.label[for="${input.id}"]`);
@@ -137,4 +281,13 @@ function setErrorMessage(input, message) {
         label.textContent = label.getAttribute('data-default-text');
         label.classList.remove('labelError');
     }
+}
+
+function playAnimation(element,animationClass) {
+    element.classList.add(animationClass);
+    element.addEventListener("animationend", () => {
+        element.classList.remove(animationClass);
+    });
+
+    return;
 }

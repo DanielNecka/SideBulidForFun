@@ -90,7 +90,6 @@ body {
   align-items: center;
 }
 .loginContainer .loginBox {
-  min-width: 33.333333%;
   padding: 50px;
   border-radius: 25px;
   background-color: #f9f9f9;
@@ -98,6 +97,7 @@ body {
 .loginContainer .loginBox .loginText {
   font-size: 30px;
   font-weight: 800;
+  max-width: 400px;
   color: #11296B;
 }
 .loginContainer .loginBox .actionBar {
@@ -171,6 +171,32 @@ body {
 }
 .loginContainer .loginBox .actionContainer .errorInputParent {
   border: 2px solid #ff0000;
+}
+.loginContainer .loginBox .actionContainer .loginBtn {
+  width: 400px;
+  height: 50px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 10px;
+  background-color: #00509D;
+  color: #f9f9f9;
+}
+.loginContainer .loginBox .actionContainer .registerBtn {
+  width: 400px;
+  height: 50px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 10px;
+  background-color: #00509D;
+  color: #f9f9f9;
 }
 
 /*# sourceMappingURL=style.css.map */
