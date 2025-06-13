@@ -1,0 +1,127 @@
+.loginContainer {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loginBox {
+        min-width: 33.333333%;
+        padding: 50px;
+
+        border-radius: 25px;
+
+        background-color: #f9f9f9;
+
+        .loginText {
+            font-size: 30px;
+            font-weight: 800;
+
+            color: #11296B;
+        }
+
+        .actionBar {
+            margin-top: 30px;
+
+            display: flex;
+            gap: 30px;
+
+            p {
+                font-size: 24px;
+                font-weight: 600;
+                color: #00509D;
+
+                transition: text-decoration 0.5s, color 0.5s;
+
+                cursor: default;
+                user-select: none;
+            }
+
+            .selected {
+                color: #11296B;
+
+                text-decoration: underline;
+            }
+        }
+
+        .row {
+            display: flex;
+            gap: 30px;
+        }
+
+        .actionContainer {
+            .label {
+                display: block;
+                margin-top: 20px;
+                font-size: 24px;
+                font-weight: 500;
+                color: #00509D; 
+            }
+
+            .labelError {
+                color: #ff0000 !important;
+            }
+
+            .input {
+                margin-top: 10px;
+
+                width: 400px;
+                height: 50px;
+
+                border-radius: 10px;
+                border: 2px solid #00509D;
+
+                overflow: hidden;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .labelInside {
+                    display: block;
+
+                    width: 50px;
+                    height: 50px;
+
+                    background-color: #00519d61;
+
+                    color: #00509D;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    transition: margin-left 0.4s ease, opacity 0.4s ease;
+                }
+
+                .labelInsideActive {
+                    margin-left: -50px
+                }
+
+                .errorInput {
+                    background-color:#ff000059 !important;
+                }
+
+                input {
+                    width: 400px;
+                    height: 50px;
+
+                    padding-left: 10px;
+
+                    color: #00509D;
+                    font-size: 24px;
+
+                    outline: none;
+                    background-color: transparent;
+                    border: none;
+                }
+            }
+            
+            .errorInputParent {
+                border: 2px solid #ff0000;
+            }
+        }
+    }
+}
+
