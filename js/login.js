@@ -235,37 +235,6 @@ function registerHandler() {
     });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function setErrorMessage(input, message) {
     const label = document.querySelector(`label.label[for="${input.id}"]`);
     if (!label) return;

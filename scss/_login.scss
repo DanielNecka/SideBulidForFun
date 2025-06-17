@@ -1,3 +1,5 @@
+@use 'colors' as *;
+
 .loginContainer {
     width: 100%;
     height: 100%;
@@ -11,7 +13,7 @@
 
         border-radius: 25px;
 
-        background-color: #f9f9f9;
+        background-color: $secondBg;
 
         .loginText {
             font-size: 30px;
@@ -19,7 +21,7 @@
 
             max-width: 400px;
 
-            color: #11296B;
+            color: $secondText;
         }
 
         .actionBar {
@@ -31,7 +33,7 @@
             p {
                 font-size: 24px;
                 font-weight: 600;
-                color: #00509D;
+                color: $secondText;
 
                 transition: text-decoration 0.5s, color 0.5s;
 
@@ -40,7 +42,7 @@
             }
 
             .selected {
-                color: #11296B;
+                color: $text;
 
                 text-decoration: underline;
             }
@@ -57,11 +59,11 @@
                 margin-top: 20px;
                 font-size: 24px;
                 font-weight: 500;
-                color: #00509D; 
+                color: $secondBg; 
             }
 
             .labelError {
-                color: #ff0000 !important;
+                color: $error !important;
             }
 
             .input {
@@ -71,7 +73,7 @@
                 height: 50px;
 
                 border-radius: 10px;
-                border: 2px solid #00509D;
+                border: 2px solid $secondAccent;
 
                 overflow: hidden;
 
@@ -85,9 +87,9 @@
                     width: 50px;
                     height: 50px;
 
-                    background-color: #00519d61;
+                    background-color: $bgTransparent;
 
-                    color: #00509D;
+                    color: $secondAccent;
 
                     display: flex;
                     justify-content: center;
@@ -110,7 +112,7 @@
 
                     padding-left: 10px;
 
-                    color: #00509D;
+                    color: $secondAccent;
                     font-size: 24px;
 
                     outline: none;
@@ -120,7 +122,7 @@
             }
             
             .errorInputParent {
-                border: 2px solid #ff0000;
+                border: 2px solid $errorTransparent;
             }
 
             .loginBtn {
@@ -138,12 +140,12 @@
 
                 border-radius: 10px;
 
-                background-color: #00509D;
-                color: #f9f9f9;
+                background-color: $bg;
+                color: $text;
             }
 
             .registerBtn {
-                                width: 400px;
+                width: 400px;
                 height: 50px;
 
                 margin-top: 20px;
@@ -157,8 +159,8 @@
 
                 border-radius: 10px;
 
-                background-color: #00509D;
-                color: #f9f9f9;
+                background-color: $bg;
+                color: $text;
             }
         }
     }
