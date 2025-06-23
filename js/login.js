@@ -27,7 +27,7 @@ function insertContent(contentType) {
 
     if (contentType === "login") {
 
-        fetch("loginActivity/loginView.html")
+        fetch("https://danielnecka.github.io/SideBulidForFun/loginActivity/loginView.html")
             .then(res => res.text())
             .then(html => {
                 actionContainer.innerHTML = html;
@@ -39,7 +39,7 @@ function insertContent(contentType) {
 
     } else if (contentType === "register") {
 
-        fetch("loginActivity/registerView.html")
+        fetch("https://danielnecka.github.io/SideBulidForFun/loginActivity/registerView.html")
             .then(res => res.text())
             .then(html => {
                 actionContainer.innerHTML = html;
