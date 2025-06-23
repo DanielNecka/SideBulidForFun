@@ -11,14 +11,14 @@ function ifUserLoginHendler() {
         if (cookieName === "userIsLogIn") {
             console.log("User is logged in");
 
-            fetch("mainActivity/main.html")
+            fetch("https://danielnecka.github.io/SideBulidForFun/mainActivity/main")
             .then(res => res.text())
             .then(html => {body.innerHTML = html;})
             .then(() => {
                 document.title = "SideBuildForFun";
             })
         } else {
-            fetch("/loginActivity/login.html")
+            fetch("https://danielnecka.github.io/SideBulidForFun/loginActivity/login.html")
                 .then(res => res.text())
                 .then(html => {body.innerHTML = html;})
                 .then(() => {
