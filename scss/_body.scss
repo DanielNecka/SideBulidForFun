@@ -1,6 +1,10 @@
+@use 'colors' as *;
+
 body {
     width: 100%;
     height: 100vh;
 
     font-family: "Roboto", sans-serif;
+
+    background-color: $bg;
 }
